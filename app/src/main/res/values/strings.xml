@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Lab05</string>
+    <string name="arrowBackDescription">Volver</string>
+    <string name="front_default">Front Default</string>
+    <string name="back_default">Back Default</string>
+    <string name="front_shiny">Front Shiny</string>
+    <string name="back_shiny">Back Shiny</string>
+    <string name="titlePKList">Pokemon List</string>
+    <string name="PK404">No se encontró el pokemon</string>
 </resources>
