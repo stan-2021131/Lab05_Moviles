@@ -1,4 +1,4 @@
-package com.example.lab05.api
+package com.example.lab05.data.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,4 +1,4 @@
-package com.example.lab05.components
+package com.example.lab05.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

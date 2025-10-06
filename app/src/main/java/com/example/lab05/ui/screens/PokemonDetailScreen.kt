@@ -1,8 +1,6 @@
-package com.example.lab05.screens
+package com.example.lab05.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.lab05.R
-import com.example.lab05.components.TopBar
+import com.example.lab05.ui.components.TopBar
 import com.example.lab05.model.PokemonD
 
 @Composable
@@ -65,7 +63,7 @@ fun PokemonDetailScreen(pokemon: PokemonD, onBack: () -> Unit){
 
         Row {
             Card(
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF212121)), // fondo gris oscuro)
+                colors = CardDefaults.cardColors(containerColor = Color(0xFF212121)),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(4.dp))
             {
