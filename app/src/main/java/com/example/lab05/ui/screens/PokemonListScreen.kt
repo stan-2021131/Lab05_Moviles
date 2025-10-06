@@ -1,9 +1,6 @@
-package com.example.lab05.screens
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,33 +15,42 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
-import com.example.lab05.R
-import com.example.lab05.api.PokemonViewModel
-import com.example.lab05.components.TopBar
 import com.example.lab05.model.PokemonD
+import com.example.lab05.ui.components.TopBar
+import com.example.lab05.ui.viewModel.PokemonViewModel
+import com.example.lab05.R
 import java.util.Locale
 
 @Composable
-fun PokemonListScreen(viewModel: PokemonViewModel = PokemonViewModel(), onPokemonClick: (PokemonD)->Unit) {
+fun PokemonListScreen(
+    viewModel: PokemonViewModel = viewModel(),
+    onPokemonClick: (PokemonD) -> Unit
+) {
+    val pokemonList by viewModel.pokemonList.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
+
     TopBar(stringResource(R.string.titlePKList), false, {})
     Column(
         modifier = Modifier.padding(top = 80.dp).fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        if(viewModel.isLoading){
+    ) {
+        if (isLoading) {
             CircularProgressIndicator()
-        }else if(viewModel.errorMessage.isNotEmpty()){
-            Text("Error: ${viewModel.errorMessage}")
-        }else{
+        } else if (errorMessage.isNotEmpty()) {
+            Text("Error: $errorMessage")
+        } else {
             LazyColumn {
-                items(viewModel.pokemonList){
-                        pokemon ->
+                items(pokemonList) { pokemon ->
                     Card( modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)

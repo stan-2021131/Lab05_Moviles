@@ -1,6 +1,5 @@
-package com.example.lab05.api
+package com.example.lab05.data.remote
 
-import com.example.lab05.model.Pokemon
 import com.example.lab05.model.PokemonD
 import com.example.lab05.model.PokemonResponse
 import retrofit2.http.GET
